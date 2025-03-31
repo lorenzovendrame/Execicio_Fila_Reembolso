@@ -32,11 +32,26 @@ public class Main {
                 case 2:
                     if (gp.fila != null && gp.fila.fim() != null) {
                         Scanner decisaoPedido = new Scanner(System.in);
-                        System.out.println("Escolha a decisão do Pedido: ");
-                        boolean decisao = decisaoPedido.nextBoolean();
-                        System.out.println("Escreva sua justificativa: ");
-                        String justificativa = decisaoPedido.next();
-                        gp.removerPedidoFila(decisao, justificativa);
+                        System.out.println("Aprova Reembolso do Pedido ? Sim (s) ou Não (n)");
+                        String decisao = decisaoPedido.next();
+                        boolean decisaoBoolean;
+                        if (decisao.equals("sim") || decisao.equals("s")) {
+                            decisaoBoolean = true;
+                        }
+                        else if (decisao.equals("não") || decisao.equals("nao") || decisao.equals("n")) {
+                                decisaoBoolean = false;
+                        }
+                        else {
+                            decisaoBoolean = false;
+                            System.out.println("Decisão não reconhecida! Atribuindo como falso");
+                        }
+                        String justificativa = null;
+                        Scanner justificativaScan = new Scanner(System.in);
+                        if (!decisaoBoolean) {
+                            System.out.println("Escreva sua justificativa: ");
+                            justificativa = justificativaScan.nextLine();
+                        }
+                        gp.removerPedidoFila(decisaoBoolean, justificativa);
                     } else {
                         System.out.println("Fila vazia!");
                     }

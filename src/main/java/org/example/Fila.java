@@ -15,14 +15,7 @@ public class Fila {
         if (inicio == null) {
             inicio = novoNo;
             fim = novoNo;
-            //fim.anterior = novoNo;
-            //inicio.anterior = null;
-            //inicio.proximo = novoNo;
-            //fim.proximo = null;
         } else {
-            /*inicio.anterior = novoNo;
-            novoNo.proximo = inicio;
-            inicio = novoNo;*/
             inicio.anterior = novoNo;
             novoNo.proximo = inicio;
             inicio = novoNo;
@@ -38,15 +31,18 @@ public class Fila {
             System.out.println("Fila vazia");
         } else {
             fim.pedido.setDecisao(decisao);
-            fim.pedido.setJustificativa(justificativa);
-            System.out.println(fim.pedido.toString() + "\nDecisão: " + decisao + "\nJustificativa: " + justificativa);
-            //No penultimo = fim.anterior;
+            if (justificativa != null) {
+                fim.pedido.setJustificativa(justificativa);
+                System.out.println(fim.pedido.toString() + "\nDecisão: " + (decisao ? "Aprovado" : "Reprovado") + "\nJustificativa: " + justificativa);
+            } else {
+                System.out.println(fim.pedido.toString() + "\nDecisão: " + (decisao ? "Aprovado" : "Reprovado"));
+            }
+            //System.out.println(fim.pedido.toString() + "\nDecisão: " + decisao + "\nJustificativa: " + justificativa);
             if (fim.pedido == inicio.pedido) {
                 inicio = null;
             }
             fim = fim.anterior;
             if (fim != null) {
-                //fim.anterior = penultimo.anterior;
                 fim.proximo = null;
             }
         }
