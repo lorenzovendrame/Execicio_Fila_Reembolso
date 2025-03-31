@@ -14,9 +14,6 @@ public class Pedido {
         this.descricao = descricao;
     }
 
-    public Pedido() {
-    }
-
     public long getNumeroPedido() {
         return numeroPedido;
     }

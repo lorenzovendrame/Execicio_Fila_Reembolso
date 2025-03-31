@@ -7,7 +7,7 @@ public class GerenciamentoPedidos {
     public GerenciamentoPedidos(){
         fila = new Fila();
         numberoPedido = 0;
-    };
+    }
 
     public void inserirPedidoFila(Pedido pedido){
         pedido.setNumeroPedido(++numberoPedido);

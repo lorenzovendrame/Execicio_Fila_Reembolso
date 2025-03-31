@@ -15,61 +15,40 @@ public class Fila {
         if (inicio == null) {
             inicio = novoNo;
             fim = novoNo;
-            fim.anterior = novoNo;
+            //fim.anterior = novoNo;
             //inicio.anterior = null;
-            inicio.proximo = novoNo;
+            //inicio.proximo = novoNo;
             //fim.proximo = null;
         } else {
-            if (inicio != null) {
-                inicio.anterior = novoNo;
-                novoNo.proximo = inicio;
-                inicio = novoNo;
-            }
+            /*inicio.anterior = novoNo;
+            novoNo.proximo = inicio;
+            inicio = novoNo;*/
+            inicio.anterior = novoNo;
+            novoNo.proximo = inicio;
+            inicio = novoNo;
         }
     }
-
-    /*public void inserirNoFinal(Pedido pedido) {//Nao faz sentido
-        No novoNo = new No(pedido);
-        if (cabeca == null) {
-            cabeca = novoNo;
-        } else {
-            No temp = cabeca;
-            while (temp.proximo != null) {
-                temp = temp.proximo;
-            }
-            temp.proximo = novoNo;
-        }
-    }*/
-
-    /*public boolean removerNoInicio() {//Nao faz sentido
-        if (inicio == null) {
-            System.out.println("Fila vazia");
-            return false;
-        } else {
-            System.out.println(inicio.pedido.toString());
-            inicio = inicio.proximo;
-            return true;
-        }
-    }*/
 
     public No fim(){
         return fim;
     }
 
-    public boolean removerNoFim(boolean decisao, String justificativa) {
+    public void removerNoFim(boolean decisao, String justificativa) {
         if (fim == null) {
             System.out.println("Fila vazia");
-            return false;
         } else {
             fim.pedido.setDecisao(decisao);
             fim.pedido.setJustificativa(justificativa);
-            System.out.println(fim.pedido.toString());
-            No penultimo = fim.anterior;
+            System.out.println(fim.pedido.toString() + "\nDecisão: " + decisao + "\nJustificativa: " + justificativa);
+            //No penultimo = fim.anterior;
+            if (fim.pedido == inicio.pedido) {
+                inicio = null;
+            }
             fim = fim.anterior;
             if (fim != null) {
-                fim.anterior = penultimo.anterior;
+                //fim.anterior = penultimo.anterior;
+                fim.proximo = null;
             }
-            return true;
         }
     }
 

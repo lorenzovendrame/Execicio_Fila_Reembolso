@@ -35,7 +35,7 @@ public class Main {
                         System.out.println("Escolha a decisão do Pedido: ");
                         boolean decisao = decisaoPedido.nextBoolean();
                         System.out.println("Escreva sua justificativa: ");
-                        String justificativa = decisaoPedido.nextLine();
+                        String justificativa = decisaoPedido.next();
                         gp.removerPedidoFila(decisao, justificativa);
                     } else {
                         System.out.println("Fila vazia!");
